@@ -12,7 +12,7 @@ package graphprogram;
  *
  * @author ev
  */
-public class GraphProgram {
+public class App {
 
     /**
      * Unit tests the {@code GraphProgram} data type.
