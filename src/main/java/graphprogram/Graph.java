@@ -1,5 +1,7 @@
 package graphprogram;
 
+import java.util.ArrayList;
+
 /**
  * The {@code Graph} class represents a interface for a graph.
  *
@@ -23,7 +25,7 @@ public interface Graph {
 
   public void overallVertexDegreeDirectedGraph();
 
-  public void transversalDfs(int vertex, int[] visited);
+  public ArrayList<Integer> transversalDfs(int vertex, int[] visited);
 
-  public void transversalBfs(int vertex);
+  public int[] transversalBfs(int vertex);
 }

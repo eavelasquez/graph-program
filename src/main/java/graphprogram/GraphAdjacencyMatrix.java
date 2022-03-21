@@ -7,6 +7,8 @@
  ******************************************************************************/
 package graphprogram;
 
+import java.util.ArrayList;
+
 /**
  * Adjacency matrix representation of a graph.
  *
@@ -43,6 +45,42 @@ public class GraphAdjacencyMatrix implements Graph {
 
       addEdge(edges[i][0], edges[i][1]);
     }
+  }
+
+  /**
+   * Returns the number of vertices in the graph.
+   *
+   * @return the number of vertices in the graph.
+   */
+  public int getVertexCount() {
+    return vertexCount;
+  }
+
+  /**
+   * Sets the number of vertices in the graph.
+   *
+   * @param vertexCount the number of vertices in the graph.
+   */
+  public void setVertexCount(int vertexCount) {
+    this.vertexCount = vertexCount;
+  }
+
+  /**
+   * Returns the if the graph is directed.
+   * 
+   * @return the if the graph is directed.
+   */
+  public boolean getIsDirected() {
+    return isDirected;
+  }
+
+  /**
+   * Sets the if the graph is directed.
+   * 
+   * @param isDirected the if the graph is directed.
+   */
+  public void setDirected(boolean isDirected) {
+    this.isDirected = isDirected;
   }
 
   /**
@@ -202,24 +240,31 @@ public class GraphAdjacencyMatrix implements Graph {
    *
    * @param vertex  the vertex whose transversal is to be found.
    * @param visited the array of visited vertices.
+   * @return the transversal of the graph.
    */
-  public void transversalDfs(int vertex, int[] visited) {
+  public ArrayList<Integer> transversalDfs(int vertex, int[] visited) {
+    ArrayList<Integer> transversal = new ArrayList<Integer>();
+
     visited[vertex] = 1;
+    transversal.add(vertex);
     System.out.println("Vertex: " + vertex);
 
     for (int i = 0; i < this.vertexCount; i++) {
       if (this.adjacencyMatrix[vertex][i] == 1 && visited[i] == 0) {
-        transversalDfs(i, visited);
+        transversal.addAll(transversalDfs(i, visited));
       }
     }
+
+    return transversal;
   }
 
   /**
    * This method is used to get the transversal BFS of the graph.
    *
    * @param vertex the vertex whose transversal is to be found.
+   * @return the transversal of the graph. 
    */
-  public void transversalBfs(int vertex) {
+  public int[] transversalBfs(int vertex) {
     int first = -1, latest = 0;
     int[] queue = new int[this.vertexCount];
     int[] visited = new int[this.vertexCount];
@@ -240,5 +285,7 @@ public class GraphAdjacencyMatrix implements Graph {
         }
       }
     }
+
+    return queue;
   }
 }

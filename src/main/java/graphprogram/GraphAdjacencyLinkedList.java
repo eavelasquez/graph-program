@@ -7,6 +7,8 @@
  ******************************************************************************/
 package graphprogram;
 
+import java.util.ArrayList;
+
 /**
  * Adjacency matrix representation of a graph.
  *
@@ -296,10 +298,12 @@ public class GraphAdjacencyLinkedList implements Graph {
    *
    * @param vertex the vertex whose transversal is to be found.
    * @param visited the vertex visited.
+   * @return the transversal of the graph.
    */
-  public void transversalDfs(int vertex, int[] visited) {
+  public ArrayList<Integer> transversalDfs(int vertex, int[] visited) {
     int v;
     Node temp = head;
+    ArrayList<Integer> transversal = new ArrayList<>();
 
     visited[vertex] = 1;
     System.out.print(vertex + " ");
@@ -308,19 +312,22 @@ public class GraphAdjacencyLinkedList implements Graph {
       v = temp.getVertex();
 
       if (visited[v] == 0) {
-        transversalDfs(v, visited);
+        transversal.addAll(transversalDfs(v, visited));
       }
 
       temp = temp.getNext();
     }
+
+    return transversal;
   }
 
   /**
    * This method is used to get the transversal BFS of the graph.
    *
    * @param vertex the vertex whose transversal is to be found.
+   * @return the transversal of the graph.
    */
-  public void transversalBfs(int vertex) {
+  public int[] transversalBfs(int vertex) {
     Node temp = null;
     int v, first = -1, latest = 0;
     int[] queue = new int[vertexCount];
@@ -348,6 +355,8 @@ public class GraphAdjacencyLinkedList implements Graph {
         temp = temp.getNext();
       }
     }
+
+    return queue;
   }
 }
 
