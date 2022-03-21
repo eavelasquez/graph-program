@@ -1,4 +1,4 @@
-package graph.program;
+package graphprogram;
 
 /**
  * The {@code Graph} class represents a interface for a graph.

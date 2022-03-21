@@ -5,7 +5,7 @@
  *  A graph, implementing with adjacency linked list and matrix.
  *
  ******************************************************************************/
-package graph.program;
+package graphprogram;
 
 /**
  * The {@code GraphProgram} class represents a graph program.

@@ -5,7 +5,7 @@
  *  A graph, implementing adjacency linked list.
  *
  ******************************************************************************/
-package graph.program;
+package graphprogram;
 
 /**
  * Adjacency matrix representation of a graph.
